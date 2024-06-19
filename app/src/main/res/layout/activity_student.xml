@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/white">
+
+                <ImageButton
+                    android:id="@+id/btn_users"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/baseline_person_add_24"
+                    android:padding="40dp"
+                    android:contentDescription="Utilisateurs" />
+
+                <ImageButton
+                    android:id="@+id/btn_group_leader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/baseline_assignment_ind_24"
+                    android:padding="40dp"
+                    android:contentDescription="Chef de groupe" />
+
+                <ImageButton
+                    android:id="@+id/btn_menu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:padding="40dp"
+                    android:contentDescription="Menu"
+                    android:onClick="onMenuButtonClick" />
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+            <SearchView
+                android:id="@+id/search_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/search_view_background"
+                android:queryHint="Rechercher..."
+                android:iconifiedByDefault="false"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <!-- Contenu principal avec les éléments existants -->
+        <LinearLayout
+            android:id="@+id/user_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp" />
+
+    </LinearLayout>
+
+    <!-- Bouton absolu en bas à droite -->
+    <ImageButton
+        android:id="@+id/btn_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/plus_button"
+        android:background="?attr/selectableItemBackground"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"/>
+
+</FrameLayout>

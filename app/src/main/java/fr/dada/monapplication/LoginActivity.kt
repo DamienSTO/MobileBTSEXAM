@@ -2,14 +2,10 @@ package fr.dada.monapplication;
 
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Color
 import android.os.Bundle
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import okhttp3.*
@@ -47,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
         val password = editTextPassword.text.toString().trim()
 
         if (username.isNotBlank() && password.isNotBlank()) {
-            sendRequest("http://localhost/toDoList/api/login.php", username, password)
+            sendRequest("http://192.168.19.1/toDoList/api/login.php", username, password)
         } else {
             Snackbar.make(
                 findViewById(android.R.id.content),
@@ -73,6 +69,7 @@ class LoginActivity : AppCompatActivity() {
     private fun getCallbackForApiResponse(): Callback {
         return object : Callback {
             override fun onFailure(call: Call, e: IOException) {
+                Log.e("logFailure",e.toString())
                 runOnUiThread {
                     Snackbar.make(
                         findViewById(android.R.id.content),
@@ -91,7 +88,7 @@ class LoginActivity : AppCompatActivity() {
 
                         sharedPreferences.edit().putString("token", token).apply()
 
-                        navigateTo(LoggedActivity::class.java)
+                        navigateTo(LobbyActivity::class.java)
                     } else {
                         Snackbar.make(
                             findViewById(android.R.id.content),
